@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the amenity class"""
+"""Amenity class that inherits from BaseModel"""
 from os import getenv
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
@@ -7,7 +7,7 @@ from sqlalchemy import Column, String
 
 
 class Amenity(BaseModel, Base):
-    """This is the class for Amenity
+    """ Amenity Class
     Attributes:
         name: input name
     """
