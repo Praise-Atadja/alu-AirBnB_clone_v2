@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/python3
 """Module that execute functions"""
 from fabric.api import *
@@ -28,3 +29,6 @@ ic/current".format(path2[0]))
         return True
     else:
         return False
+=======
+
+>>>>>>> 59785fd01d3d5405cc9c209d0ed14bf526d2b987

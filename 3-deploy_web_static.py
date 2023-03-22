@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/python3
 """Module to execute functions"""
 from fabric.api import *
@@ -59,3 +60,6 @@ def deploy():
         return new_path
     else:
         return False
+=======
+
+>>>>>>> 59785fd01d3d5405cc9c209d0ed14bf526d2b987
