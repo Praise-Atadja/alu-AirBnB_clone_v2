@@ -19,6 +19,7 @@ def do_clean(number=0):
     archives = sorted(os.listdir("versions"))
     [archives.pop() for i in range(number)]
     with lcd("versions"):
+        
         [local("rm ./{}".format(a)) for a in archives]
 
     with cd("/data/web_static/releases"):
