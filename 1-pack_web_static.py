@@ -1,22 +1,22 @@
 #!/usr/bin/python3
-"""Module that execute functions"""
-from fabric.api import local
-from fabric.decorators import runs_once
+# Fabfile to generates a .tgz archive from the contents of web_static.
+import os.path
 from datetime import datetime
-from os.path import getsize
+from fabric.api import local
 
 
-@runs_once
 def do_pack():
-    local("mkdir -p versions")
-    date_time = datetime.now().strftime("%Y%m%d%H%M%S")
-    command = local("tar -cvzf versions/web_static_{}.tgz ./web_stat\
-ic".format(date_time))
-
-    if command.succeeded:
-        size = getsize('versions/web_static_{}.tgz'.format(date_time))
-        print("web_static packed: versions/web_static_{}.tgz -> {}Byt\
-es".format(date_time, size))
-        return ('versions/web_static_{}.tgz'.format(date_time))
-    else:
+    """Create a tar gzipped archive of the directory web_static."""
+    dt = datetime.utcnow()
+    file = "versions/web_static_{}{}{}{}{}{}.tgz".format(dt.year,
+                                                         dt.month,
+                                                         dt.day,
+                                                         dt.hour,
+                                                         dt.minute,
+                                                         dt.second)
+    if os.path.isdir("versions") is False:
+        if local("mkdir -p versions").failed is True:
+            return None
+    if local("tar -cvzf {} web_static".format(file)).failed is True:
         return None
+    return file
